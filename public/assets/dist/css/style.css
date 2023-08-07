@@ -1,32 +1,23 @@
-    .avatar-image {
-      width: 35px;
-      height: 35px;
-      object-fit: cover;
-      border-radius: 50%;
-    }
+body {
+    background-color: #f8f9fa; /* Warna latar belakang keseluruhan halaman */
+}
+.login-container {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-card {
+    width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Efek bayangan */
+}
 
-    .fixed-navbar{
-        height: 60px;
-    }
-
-    .dropdown-toggle {
-      background: none;
-      border: none;
-      padding: 0;
-      box-shadow: none;
-    }
-
-    .avatar-image:hover {
-      filter: none;
-    }
-    .dropdown-toggle::after {
-      content: none;
-    }
-
-    /* Custom media query for small screens */
-    @media (max-width: 767px) {
-      .avatar-image {
-        width: 25px;
-        height: 25px;
-      }
-    }
+.already {
+    display:block;
+    text-align:center;
+    font-size:12px;
+    color:#6f7a85;
+    opacity:0.9;
+    text-decoration:none;
+  }
