@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="{{ asset('/img/fav.png') }}">
     <title>Ngide-Net</title>
-    <link rel="stylesheet" href="/assets/dist/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
         integrity="sha512-7xN6EAgOvWlXDsW7XehwJk0IJmFqXknm0aW1c1Hva/J0u1DZFNXMl9PlKAh7FZzR8ROk5cvWrrbIyIeODlj9Q=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -35,8 +35,8 @@
                         <div class="d-grid gap-1">
                             <button type="submit" class="btn btn-success btn-lg btn-block">Login</button>
                             <small class=" text-sm-center mt-3 mb-2 text-success">Ngide.net &copy; 2023</small>
-                            <p>Belum punya akun? <a href="register" class="already">Daftar</a></p>
-                            
+                            <p class="punya">Belum punya akun? <a href="register" class="daftar">Daftar</a></p>
+
                         </div>
                     </form>
                 </div>
