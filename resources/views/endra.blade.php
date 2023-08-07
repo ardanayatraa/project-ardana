@@ -1,27 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Endra Blog</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="{{ asset('/img/fav.png') }}">
+    <title>!Madarda</title>
+    <link rel="stylesheet" href="/assets/dist/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-7xN6EAgOvWlXDsW7XehwJk0IJmFqXknm0aW1c1Hva/J0u1DZFNXMl9PlKAh7FZzR8ROk5cvWrrbIyIeODlj9Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
 </head>
+
 <body>
-    <h1>My First Laravel Projects</h1>
-    <h1>Welcome to Fiber Optic Monitor</h1>
 
-    <?php
-    // Simulasikan data status koneksi
-    $connectionStatus = "Connected";
-    $downloadSpeed = 50;
-    $uploadSpeed = 20;
-    $categori = "Wired";
 
-    // Tampilkan informasi pemantauan
-    echo "<p>Status Koneksi: $connectionStatus</p>";
-    echo "<p>Download Speed: $downloadSpeed Mbps</p>";
-    echo "<p>Upload Speed: $uploadSpeed Mbps</p>";
-    echo "<p>Categori Internet:    $categori Connection</p>";
-    ?>
+    {{-- Konten --}}
+    <div class="container">
+
+
+
+        @yield('content')
+    </div>
+
+    <script src="assets/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+    </script>
 </body>
+
 </html>
