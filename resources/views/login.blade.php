@@ -25,11 +25,11 @@
                     </div>
                     <form action="#" method="POST">
                         <div class="mb-3">
-                            <label for="username" class="form-label">Username:</label>
+                            <label for="username" class="form-label">Username</label>
                             <input type="text" class="form-control form-control-lg" id="username" name="username">
                         </div>
                         <div class="mb-3">
-                            <label for="pass" class="form-label">Password:</label>
+                            <label for="pass" class="form-label">Password</label>
                             <input type="password" class="form-control form-control-lg" id="pass" name="password">
                         </div>
                         <div class="d-grid gap-1">
