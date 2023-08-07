@@ -1,21 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+    @extends('layouts.main')
+@section('content')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" href="{{ asset('/img/fav.png') }}">
-    <title>Ngide-Net</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-        integrity="sha512-7xN6EAgOvWlXDsW7XehwJk0IJmFqXknm0aW1c1Hva/J0u1DZFNXMl9PlKAh7FZzR8ROk5cvWrrbIyIeODlj9Q=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-
-</head>
-
-<body>
     <div class="login-container">
         <div class="fade-overlay">
             <div class="card login-card">
@@ -34,19 +19,13 @@
                         </div>
                         <div class="d-grid gap-1">
                             <button type="submit" class="btn btn-success btn-lg btn-block">Login</button>
-                            <small class=" text-sm-center mt-3 mb-2 text-success">Ngide.net &copy; 2023</small>
-                            <p class="punya">Belum punya akun? <a href="register" class="daftar">Daftar</a></p>
-
+                            <small class="text-sm-center mt-3 mb-2 text-success">Ngide.net &copy; 2023</small>
+                            <p class="punya text-center">Belum punya akun? <a href="register" class="daftar">Daftar</a></p>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+    </div>
 
-
-        <script src="assets/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
-        </script>
-</body>
-
-</html>
+@endsection
