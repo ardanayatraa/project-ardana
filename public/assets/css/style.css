@@ -12,12 +12,3 @@ body {
     width: 500px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Efek bayangan */
 }
-
-.already {
-    display:block;
-    text-align:center;
-    font-size:12px;
-    color:#6f7a85;
-    opacity:0.9;
-    text-decoration:none;
-  }

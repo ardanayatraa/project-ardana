@@ -35,7 +35,8 @@
                         <div class="d-grid gap-1">
                             <button type="submit" class="btn btn-success btn-lg btn-block">Login</button>
                             <small class=" text-sm-center mt-3 mb-2 text-success">Ngide.net &copy; 2023</small>
-                            <a href="#" class="already">Belum punya akun ? Daftar.</a>
+                            <p>Belum punya akun? <a href="register" class="already">Daftar</a></p>
+                            
                         </div>
                     </form>
                 </div>
