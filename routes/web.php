@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\TamuControllers;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +28,6 @@ Route::get('register', function () {
     return view('register');
 });
 
-Route::get('list', function () {
-    return view('articles.list');
-});
+
+
+Route::get('/users/list', [TamuControllers::class, 'index']);
