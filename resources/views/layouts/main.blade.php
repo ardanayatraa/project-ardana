@@ -4,7 +4,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" href="{{ asset('/img/fav.png') }}">
     <title>Ngide-Net</title>
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -14,8 +13,16 @@
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
 </head>
+
 <body>
-@yield('content')
-   
+    <nav class="navbar navbar-expand-lg  bg-dark navbar-dark sticky-top fixed-navbar">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a class="navbar-brand" href="{{ url('/') }}">Ngide.net</a>
+
+
+    </nav>
+    @yield('content')
+
 </body>
+
 </html>

@@ -25,3 +25,7 @@ Route::get('/', function () {
 Route::get('register', function () {
     return view('register');
 });
+
+Route::get('list', function () {
+    return view('articles.list');
+});
