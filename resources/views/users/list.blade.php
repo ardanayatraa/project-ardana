@@ -1,6 +1,7 @@
 @extends('layouts.main')
 @section('content')
     <div class="container d-flex justify-content-between align-items-center mt-5">
+
         <table class="table">
             <thead>
                 <tr>

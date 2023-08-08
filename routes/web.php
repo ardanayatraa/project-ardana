@@ -28,6 +28,8 @@ Route::get('register', function () {
     return view('register');
 });
 
-
+Route::get('forgot', function () {
+    return view('users.forgot');
+});
 
 Route::get('/users/list', [TamuControllers::class, 'index']);
