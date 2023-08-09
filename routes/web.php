@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\TamuControllers;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -19,17 +20,26 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', function () {
-    return view('login');
-});
+// Route::get('/', function () {
+//     return view('users.login');
+// });
 
 
-Route::get('register', function () {
-    return view('register');
-});
+// Route::get('register', function () {
+//     return view('users.register');
+// });
 
 Route::get('forgot', function () {
     return view('users.forgot');
 });
 
 Route::get('/users/list', [TamuControllers::class, 'index']);
+
+
+Route::get('/', [UserController::class, 'index'])->middleware('guest');
+Route::post('/', [UserController::class, 'login']);
+
+Route::get('/logout', [UserController::class, 'logout']);
+
+Route::get('/register', [UserController::class, 'register']);
+Route::post('/register', [UserController::class, 'create']);

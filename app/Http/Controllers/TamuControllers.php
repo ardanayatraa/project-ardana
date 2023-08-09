@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tamu;
-
-
-
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TamuControllers extends Controller
@@ -14,7 +12,7 @@ class TamuControllers extends Controller
     {
 
         // dd('test');
-        $data = Tamu::all();
+        $data = User::all();
         //<- untuk debug / dumping data
         return view('users/list', compact('data'));
     }
