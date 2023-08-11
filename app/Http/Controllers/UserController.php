@@ -54,10 +54,10 @@ class UserController extends Controller
         // dd($request->all());
         $request->validate(
             [
-                'username' => 'required',
-                'email' => 'required',
-                'nama_lengkap' => 'required',
-                'address' => 'required',
+                'username' => 'required | unique:users,username',
+                'email' => 'required | unique:users,email',
+                'nama_lengkap' => 'required | unique:users,nama_lengkap',
+                'address' => 'required | unique:users,address',
                 'password' => 'required'
             ]
         );
@@ -75,5 +75,45 @@ class UserController extends Controller
         User::create($data);
 
         return redirect('/');
+    }
+
+
+    function delete($id)
+    {
+        // dd('test');
+        $data = User::find($id);
+        $data->delete();
+        return redirect('users/list');
+    }
+
+    function edit($id)
+    {
+        $user = User::find($id);
+        return view('users.edit', compact('user'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'nama_lengkap' => 'required',
+            'email' => 'required|email',
+            'username' => 'required',
+            'address' => 'required', // Pastikan address wajib diisi
+            // Tambahkan validasi untuk kolom lainnya
+        ]);
+
+        $user = User::findOrFail($id);
+
+        $data = [
+            'nama_lengkap' => $request->input('nama_lengkap'),
+            'email' => $request->input('email'),
+            'username' => $request->input('username'),
+            'address' => $request->input('address'),
+            // Tambahkan kolom lain yang ingin diperbarui
+        ];
+
+        $user->update($data);
+
+        return redirect('users/list');
     }
 }

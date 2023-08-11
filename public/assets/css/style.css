@@ -32,4 +32,64 @@ body {
   }
 
 
+  .avatar-image {
+    width: 40px; /* Sesuaikan ukuran yang Anda inginkan */
+    height: 40px; /* Sesuaikan ukuran yang Anda inginkan */
+    border-radius: 50%; /* Mengubah gambar menjadi lingkaran */
+    object-fit: cover; /* Memastikan gambar mengisi seluruh lingkaran */
+}
+
+
+.sidebar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 250px;
+    height: calc(100vh - 60px);
+    /* Mengatur tinggi agar tidak tumpang tindih dengan navbar atas */
+    background-color: #343a40;
+    color: #fff;
+    padding-top: 20px;
+    z-index: 1;
+    /* Menempatkan sidebar di lapisan bawah */
+}
+
+.sidebar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+}
+
+.sidebar a:hover {
+    background-color: #2c3136;
+}
+
+/* Gaya kustom untuk navbar atas */
+.fixed-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    /* Mengelevasikan navbar atas di atas sidebar */
+}
+
+.avatar-image {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.main-content {
+    margin-left: 250px;
+    margin-top: 60px;
+    padding: 20px;
+    z-index: 0;
+    /* Menempatkan konten utama di lapisan atas */
+}
+
+
+
 

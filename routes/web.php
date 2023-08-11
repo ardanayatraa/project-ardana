@@ -33,7 +33,12 @@ Route::get('forgot', function () {
     return view('users.forgot');
 });
 
+Route::get('sidebar', function () {
+    return view('layouts.sidebar');
+});
+
 Route::get('/users/list', [TamuControllers::class, 'index']);
+
 
 
 Route::get('/', [UserController::class, 'index'])->middleware('guest');
@@ -43,3 +48,11 @@ Route::get('/logout', [UserController::class, 'logout']);
 
 Route::get('/register', [UserController::class, 'register']);
 Route::post('/register', [UserController::class, 'create']);
+
+Route::delete('/delete/{id}', [UserController::class, 'delete'])->name('delete');
+
+Route::get('/user/{id}/edit', [UserController::class, 'edit'])->name('edit');
+
+Route::put('/user/{id}/update', [UserController::class, 'update']);
+
+Route::get('/layouts/main', [UserController::class, 'list']);

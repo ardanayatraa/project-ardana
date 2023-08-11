@@ -16,4 +16,13 @@ class TamuControllers extends Controller
         //<- untuk debug / dumping data
         return view('users/list', compact('data'));
     }
+
+    public function list()
+    {
+
+        // dd('test');
+        $list = User::all();
+        //<- untuk debug / dumping data
+        return view('layouts/main', compact('list'));
+    }
 }
