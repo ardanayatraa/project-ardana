@@ -58,5 +58,5 @@ Route::get('/layouts/main', [UserController::class, 'list']);
 
 Route::get('/articles', [PostController::class, 'show']);
 
-Route::get('/post/{$id}',[PostController::class, 'showpost']);
+Route::get('/post/{id}',[PostController::class, 'showpost'])->name('showpost');
 

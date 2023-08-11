@@ -6,7 +6,10 @@
                 <div class="card mx-3">
                     <img src="..." class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">{{ $posts->title }}</h5>
+                        <a href="{{ route('showpost',['id'=>$posts->id]) }}">
+                            <h5 class="card-title">{{ $posts->title }}</h5>
+                        </a>
+                      
                         <p class="card-text">{{ $posts->exerpt }}</p>
                     </div>
                     <div class="card-footer">
@@ -16,4 +19,6 @@
             </div>
         @endforeach
     </div>
+
+  
 @endsection
