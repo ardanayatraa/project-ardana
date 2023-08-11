@@ -23,4 +23,14 @@ class PostController extends Controller
         // dd($post);
         return view('articles.posts', compact('post'));
     }
+
+    function showpost($id) {
+        $posting = Post::find($id);
+        // dd($post);
+        return view('articles.post',compact('posting'));
+       
+    }
+
 }
+
+

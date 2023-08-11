@@ -40,8 +40,6 @@ Route::get('sidebar', function () {
 
 Route::get('/users/list', [TamuControllers::class, 'index']);
 
-
-
 Route::get('/', [UserController::class, 'index'])->middleware('guest');
 Route::post('/', [UserController::class, 'login']);
 
@@ -58,6 +56,7 @@ Route::put('/user/{id}/update', [UserController::class, 'update']);
 
 Route::get('/layouts/main', [UserController::class, 'list']);
 
-
-
 Route::get('/articles', [PostController::class, 'show']);
+
+Route::get('/post/{$id}',[PostController::class, 'showpost']);
+
