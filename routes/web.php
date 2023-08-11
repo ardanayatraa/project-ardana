@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\TamuControllers;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -56,3 +57,7 @@ Route::get('/user/{id}/edit', [UserController::class, 'edit'])->name('edit');
 Route::put('/user/{id}/update', [UserController::class, 'update']);
 
 Route::get('/layouts/main', [UserController::class, 'list']);
+
+
+
+Route::get('/articles', [PostController::class, 'show']);
