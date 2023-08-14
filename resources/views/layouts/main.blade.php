@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sidebar dan Navbar Kombinasi</title>
+    <title>Ngide.net | </title>
     <!-- Link ke Bootstrap CSS -->
     <link rel="stylesheet" href="/assets/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Link ke Font Awesome CSS untuk ikon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
+    <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
 </head>
 
 <body>
@@ -33,7 +34,8 @@
                             </a>
                         </li>
                         <!-- Menu Logout -->
-                        <li><a class="dropdown-item" href="/logout" style="background-color: transparent;">
+                        <li><a class="dropdown-item" href="{{ route('logout') }}"
+                                style="background-color: transparent;">
                                 <i style="margin-right: 5px;" class="fas fa-sign-out-alt"></i> Logout</a></li>
                     </ul>
                 </div>
@@ -42,8 +44,8 @@
 
         <!-- Sidebar -->
         <div class="sidebar">
-            <a href="#"><i class="fas fa-layer-group"></i> User List</a>
-            <a href="#"><i class="fas fa-link"></i> Manage Post</a>
+            <a href="{{ route('userlist') }}"><i class="fas fa-layer-group"></i> User List</a>
+            <a href="{{ route('postlist') }}"><i class="fas fa-link"></i> Manage Post</a>
             <a href="#"><i class="fas fa-thumbtack"></i> Category</a>
         </div>
 

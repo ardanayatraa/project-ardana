@@ -1,6 +1,18 @@
 @extends('layouts.display2')
 
 @section('content')
-    <p>{{ $posting->title }}</p>
-    <p>{{ $posting->body }}</p>
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        {{ $post->title }}
+                    </div>
+                    <div class="card-body">
+                        {!! $post->body !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

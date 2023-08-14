@@ -38,12 +38,12 @@ Route::get('sidebar', function () {
     return view('layouts.sidebar');
 });
 
-Route::get('/users/list', [TamuControllers::class, 'index']);
+Route::get('/users/list', [TamuControllers::class, 'index'])->name('userlist');
 
 Route::get('/', [UserController::class, 'index'])->middleware('guest');
 Route::post('/', [UserController::class, 'login']);
 
-Route::get('/logout', [UserController::class, 'logout']);
+Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 Route::get('/register', [UserController::class, 'register']);
 Route::post('/register', [UserController::class, 'create']);
@@ -58,5 +58,14 @@ Route::get('/layouts/main', [UserController::class, 'list']);
 
 Route::get('/articles', [PostController::class, 'show']);
 
-Route::get('/post/{id}',[PostController::class, 'showpost'])->name('showpost');
+Route::get('/article/{slug}', [PostController::class, 'showpost'])->name('showpost');
 
+Route::get('/admin/articles/list', [PostController::class, 'postlist'])->name('postlist');
+
+Route::get('/admin/articles/create', [PostController::class, 'newpost'])->name('newpost');
+
+Route::get('/create/post/checkSlug', [PostController::class, 'checkSlug']);
+
+
+
+Route::post('/create/newpost', [PostController::class, 'createpost'])->name('createpost');

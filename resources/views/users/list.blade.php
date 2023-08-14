@@ -18,14 +18,13 @@
             <tbody>
                 <?php $number = 1; ?> <!-- Inisialisasi penomoran otomatis -->
                 @foreach ($data as $user)
-                    <tr>
-                        <th scope="row">{{ $number++ }}</th>
-                        <td>{{ $user->nama_lengkap }}</td>
-                        <td>{{ $user->username }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>{{ $user->address }}</td>
-
-                        <td>
+                    @if ($user->id !== Auth::user()->id)
+                        <tr>
+                            <th scope="row">{{ $number++ }}</th>
+                            <td>{{ $user->nama_lengkap }}</td>
+                            <td>{{ $user->username }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->address }}</td>
                             <div class="btn-group" role="group" aria-label="Button Group">
                                 <form action="{{ route('delete', ['id' => $user->id]) }}" method="POST">
                                     @csrf
@@ -34,11 +33,13 @@
                                         onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
                                 </form>
                                 <a href="{{ route('edit', ['id' => $user->id]) }}" class="btn btn-warning">Edit</a>
-
                             </div>
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
+                    @endif
                 @endforeach
+
+
             </tbody>
         </table>
     </div>
