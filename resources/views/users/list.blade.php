@@ -1,8 +1,7 @@
 @extends('layouts.main')
 @section('content')
     <h1 class="text-center my-1 mb-4">List User</h1>
-    <div class="container d-flex justify-content-between align-items-center mt-2">
-
+    <div class="container mt-2">
         <table class="table">
             <thead>
                 <tr>
@@ -16,7 +15,7 @@
             </thead>
 
             <tbody>
-                <?php $number = 1; ?> <!-- Inisialisasi penomoran otomatis -->
+                <?php $number = 1; ?>
                 @foreach ($data as $user)
                     @if ($user->id !== Auth::user()->id)
                         <tr>
@@ -25,21 +24,20 @@
                             <td>{{ $user->username }}</td>
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->address }}</td>
-                            <div class="btn-group" role="group" aria-label="Button Group">
-                                <form action="{{ route('delete', ['id' => $user->id]) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger"
-                                        onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
-                                </form>
-                                <a href="{{ route('edit', ['id' => $user->id]) }}" class="btn btn-warning">Edit</a>
-                            </div>
+                            <td>
+                                <div class="btn-group" role="group" aria-label="Button Group">
+                                    <form action="{{ route('delete', ['id' => $user->id]) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger"
+                                            onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
+                                    </form>
+                                    <a href="{{ route('edit', ['id' => $user->id]) }}" class="btn btn-warning">Edit</a>
+                                </div>
                             </td>
                         </tr>
                     @endif
                 @endforeach
-
-
             </tbody>
         </table>
     </div>

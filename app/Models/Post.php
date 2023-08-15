@@ -22,4 +22,10 @@ class Post extends Model
     }
     // protected $fillable = ['title', 'exerpt', 'body'];
     protected $guarded = ['id'];
+
+    // Di dalam model Post
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

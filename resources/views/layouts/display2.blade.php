@@ -14,12 +14,11 @@
 </head>
 
 <body>
-    @if (Auth::check())
-        <!-- Navbar Atas -->
-        <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-navbar">
-            <div class="container d-flex justify-content-between align-items-center">
-                <a class="navbar-brand" href="/">Ngide.net</a>
-                {{--  <div class="dropdown ml-5">
+    <!-- Navbar Atas -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-navbar">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a class="navbar-brand" href="/">Ngide.net</a>
+            {{--  <div class="dropdown ml-5">
                     <button class="btn btn-secondary dropdown-toggle bg-transparent border-dark" type="button"
                         id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="/img/avatar.jpg" alt="Avatar" class="avatar-image">
@@ -37,9 +36,18 @@
                                 <i style="margin-right: 5px;" class="fas fa-sign-out-alt"></i> Logout</a></li>
                     </ul>
                 </div>  --}}
-            </div>
-        </nav>
-        {{--
+        </div>
+        @if (!Auth::check())
+            <a href="/login" class="btn btn-danger">Login</a>
+        @endif
+
+        @if (Auth::check())
+            <a href="{{ route('logout') }}" class="btn btn-danger">Logout</a>
+        @endif
+
+
+    </nav>
+    {{--
         <!-- Sidebar -->
         <div class="sidebar">
             <a href="#"><i class="fas fa-layer-group"></i> User List</a>
@@ -48,9 +56,9 @@
         </div>
 
         <!-- Konten Utama -->  --}}
-        <div class="main-content">
-    @endif
-    @yield('content')
+    <div class="main-content">
+
+        @yield('content')
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

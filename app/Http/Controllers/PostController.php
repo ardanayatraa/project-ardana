@@ -12,14 +12,11 @@ use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class PostController extends Controller
 {
-    // public function show(
-    // {
-    //     return view('artices/post', [
-    //         "title" => "Single Post",
-    //         "post" => $post,
-    //     ]);
-    // }
-
+    function halamanawal()
+    {
+        $post = Post::all();
+        return view('users.index', compact('post'));
+    }
 
     function show()
     {
@@ -45,8 +42,7 @@ class PostController extends Controller
     }
     function postlist()
     {
-        $list = Post::all();
-        // dd($post);
+        $list = Post::where('user_id', auth()->user()->id)->get();
         return view('articles.list', compact('list'));
     }
 
@@ -65,30 +61,80 @@ class PostController extends Controller
     //
     function createpost(Request $request)
     {
-        // dd($request->all());
-        $request->validate(
-            [
-                'title' => 'required',
-                'exerpt' => 'required ',
-                'body' => 'required',
-                'author' => 'required ',
-                'slug' => 'required'
-            ]
-        );
+        $request->validate([
+            'title' => 'required',
+            'exerpt' => 'required',
+            'body' => 'required',
+            'author' => 'required',
+            'slug' => 'required',
+        ]);
 
         $data = [
-
             'title' => $request->title,
             'exerpt' => $request->exerpt,
             'body' => $request->body,
             'author' => $request->author,
-            'slug' => $request->slug
-
+            'slug' => $request->slug,
+            'user_id' => auth()->user()->id, // Set user_id based on logged in user
         ];
-
 
         Post::create($data);
 
         return redirect('/admin/articles/list');
+    }
+
+    //--------------------------------------------//
+    //-------EDIT POST----------------------------//
+    //--------------------------------------------//
+    function editpost($slug)
+    {
+        $data = Post::where('slug', $slug)->firstOrFail();
+        return view('articles.edit', compact('data'));
+    }
+
+
+    public function updatepost(Request $request, $slug)
+    {
+        $request->validate([
+            'title' => 'required',
+            'exerpt' => 'required',
+            'body' => 'required',
+            'author' => 'required',
+            'slug' => 'required',
+            // Pastikan address wajib diisi
+            // Tambahkan validasi untuk kolom lainnya
+        ]);
+
+        $post = Post::where('slug', $slug)->firstOrFail();
+
+        $data = [
+            'title' => $request->input('title'),
+            'exerpt' => $request->input('exerpt'),
+            'body' => $request->input('body'),
+            'author' => $request->input('author'),
+            'slug' => $request->input('slug'),
+            // Tambahkan kolom lain yang ingin diperbarui
+        ];
+
+        $post->update($data);
+
+        return redirect('admin/articles/list');
+    }
+
+
+    //------------------------------------------//
+    //----END EDIT------------------------------//
+    //------------------------------------------//
+
+
+    //------------------------------------------//
+    //-----------------DELETE-------------------//
+    //------------------------------------------//
+    function deletepost($slug)
+    {
+
+        $data = Post::where('slug', $slug)->first();
+        $data->delete();
+        return redirect('admin/articles/list');
     }
 }

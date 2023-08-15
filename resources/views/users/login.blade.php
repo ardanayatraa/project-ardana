@@ -8,7 +8,7 @@
                         <div class="text-center mb-4">
                             <img src="/img/logo.jpg" alt="User Icon" width="80" class="img-fluid">
                         </div>
-                        <form action="/" method="POST">
+                        <form action="/login" method="POST">
                             @csrf
                             <div class="mb-3">
                                 <label for="username" class="form-label">Username</label>

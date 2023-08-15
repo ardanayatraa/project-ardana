@@ -33,7 +33,6 @@
 
         </div>  --}}
 
-
         <input id="body" type="hidden" name="body">
         <trix-editor input="body"></trix-editor>
 

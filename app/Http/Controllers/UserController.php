@@ -32,9 +32,9 @@ class UserController extends Controller
         ];
 
         if (Auth::attempt($infologin)) {
-            return redirect('users/list');
+            return redirect('/tamu/articles/list');
         } else {
-            return redirect('/');
+            return redirect('/login');
         }
     }
 

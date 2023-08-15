@@ -1,21 +1,22 @@
 @extends('layouts.main')
 @section('content')
-    <h1 class="text-center my-1 mb-4">Create New Post</h1>
-    <form action="{{ route('createpost') }}" method="POST">
+    <h1 class="text-center my-1 mb-4">Edit Your Post</h1>
+    <form action="{{ route('updatepost', ['slug' => $data->slug]) }}" method="POST">
+        @method('PUT')
         @csrf
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
-            <input type="text" class="form-control" id="title" name="title">
+            <input type="text" class="form-control" id="title" name="title" value="{{ $data->title }}">
 
         </div>
 
         <div class="mb-3">
             <label for="slug" class="form-label">Slug</label>
-            <input type="text" class="form-control" id="slug" name="slug">
+            <input type="text" class="form-control" id="slug" name="slug" value="{{ $data->slug }}">
         </div>
         <div class="mb-3">
             <label for="exerpt" class="form-label">Deskripsi</label>
-            <input type="text" class="form-control" id="exerpt" name="exerpt">
+            <input type="text" class="form-control" id="exerpt" name="exerpt" value="{{ $data->exerpt }}">
 
         </div>
 
@@ -34,7 +35,7 @@
         </div>  --}}
 
 
-        <input id="body" type="hidden" name="body">
+        <input id="body" type="hidden" name="body" value="{{ $data->body }}">
         <trix-editor input="body"></trix-editor>
 
 
