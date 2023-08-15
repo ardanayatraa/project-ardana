@@ -7,6 +7,8 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
+                    <img src="{{ asset('storage/' . $post->image) }}" class="img-fluid rounded-top" alt="">
+
                     <div class="card-header">
                         {{ $post->title }}
                     </div>

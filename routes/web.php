@@ -83,6 +83,9 @@ Route::put('/admin/update/{slug}', [PostController::class, 'updatepost'])->name(
 Route::delete('admin/delete/{slug}', [PostController::class, 'deletepost'])->name('deletepost');
 
 
-
-
 Route::get('/admin/allpost', [AdminController::class, 'allpost'])->name('allpost');
+
+
+
+// aproval
+Route::get('tamu/articles/approve-list', [PostController::class, 'listApprovePending'])->name('pendingTamu');

@@ -3,70 +3,69 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Str;
-
-
-
 use App\Models\Post;
 use Illuminate\Http\Request;
-use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class PostController extends Controller
 {
-    function halamanawal()
+    public function halamanawal()
     {
-        $post = Post::all();
+        $post = Post::where('status', '=', 'active')->get();
         return view('users.index', compact('post'));
     }
 
-    function show()
+    public function listApprovePending()
     {
+        $post = Post::where('status', '=', 'pending')->get();
+        return view('articles.pendingAprove', compact('post'));
+    }
 
+    public function show()
+    {
         $post = Post::all();
-        // dd($post);
         return view('articles.posts', compact('post'));
     }
 
-    function showpost($slug)
+    public function showpost($slug)
     {
         $post = Post::where('slug', $slug)->first();
-
-
         return view('articles.post', compact('post'));
     }
 
-    function showposts()
+    public function showposts()
     {
         $post = Post::all();
-        // dd($post);
         return view('articles.post', compact('post'));
     }
-    function postlist()
+
+    public function postlist()
     {
         $list = Post::where('user_id', auth()->user()->id)->get();
         return view('articles.list', compact('list'));
     }
 
-    function newpost()
+    public function newpost()
     {
         return view('articles.create');
     }
+
     // Pembuat Slug Otomatis
     public function checkSlug(Request $request)
     {
         $title = $request->input('title');
-        $slug = Str::slug($title, '-'); // Generate slug from the title
-        return response()->json(['slug' => $slug]); // Return the slug as JSON
+        $slug = Str::slug($title, '-');
+        return response()->json(['slug' => $slug]);
     }
-    // ..................................
-    //
-    function createpost(Request $request)
+
+    public function createpost(Request $request)
     {
         $request->validate([
             'title' => 'required',
             'exerpt' => 'required',
             'body' => 'required',
+            'image' => 'image|file|max:2048',
             'author' => 'required',
-            'slug' => 'required',
+            'slug' => 'required|unique:posts,slug',
         ]);
 
         $data = [
@@ -75,23 +74,23 @@ class PostController extends Controller
             'body' => $request->body,
             'author' => $request->author,
             'slug' => $request->slug,
-            'user_id' => auth()->user()->id, // Set user_id based on logged in user
+            'user_id' => auth()->user()->id,
         ];
+
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('post-images');
+        }
 
         Post::create($data);
 
-        return redirect('/admin/articles/list');
+        return redirect('/tamu/articles/list');
     }
 
-    //--------------------------------------------//
-    //-------EDIT POST----------------------------//
-    //--------------------------------------------//
-    function editpost($slug)
+    public function editpost($slug)
     {
         $data = Post::where('slug', $slug)->firstOrFail();
         return view('articles.edit', compact('data'));
     }
-
 
     public function updatepost(Request $request, $slug)
     {
@@ -101,8 +100,6 @@ class PostController extends Controller
             'body' => 'required',
             'author' => 'required',
             'slug' => 'required',
-            // Pastikan address wajib diisi
-            // Tambahkan validasi untuk kolom lainnya
         ]);
 
         $post = Post::where('slug', $slug)->firstOrFail();
@@ -113,26 +110,15 @@ class PostController extends Controller
             'body' => $request->input('body'),
             'author' => $request->input('author'),
             'slug' => $request->input('slug'),
-            // Tambahkan kolom lain yang ingin diperbarui
         ];
 
         $post->update($data);
 
-        return redirect('admin/articles/list');
+        return redirect('tamu/articles/list');
     }
 
-
-    //------------------------------------------//
-    //----END EDIT------------------------------//
-    //------------------------------------------//
-
-
-    //------------------------------------------//
-    //-----------------DELETE-------------------//
-    //------------------------------------------//
-    function deletepost($slug)
+    public function deletepost($slug)
     {
-
         $data = Post::where('slug', $slug)->first();
         $data->delete();
         return redirect('tamu/articles/list');

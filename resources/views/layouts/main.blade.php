@@ -21,10 +21,10 @@
             <div class="container d-flex justify-content-between align-items-center">
                 <a class="navbar-brand" href="/">Ngide.net</a>
                 <div class="dropdown ml-5">
-                    <button class="btn btn-secondary dropdown-toggle bg-transparent border-dark" type="button"
-                        id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn btn-link dropdown-toggle text-light" type="button" id="dropdownMenuButton"
+                        data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="/img/avatar.jpg" alt="Avatar" class="avatar-image">
-                        <span class="ms-2 text-light">{{ Auth::user()->nama_lengkap }}</span>
+                        <span class="ms-2">{{ Auth::user()->nama_lengkap }}</span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
                         <!-- Menu Profil -->
@@ -48,6 +48,21 @@
                 <a href="{{ route('userlist') }}"><i class="fas fa-layer-group"></i> User List</a>
             @endcan
             <a href="{{ route('postlist') }}"><i class="fas fa-link"></i> Manage Post</a>
+
+            {{--  Dropdown  --}}
+            <div class="dropdown ml-5">
+                <button class="btn  dropdown-toggle text-white" type="button" id="dropdownMenuButton"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-link"></i> Approval Status
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item text-dark" href="{{ route('pendingTamu') }}">Pending</a>
+                    <a class="dropdown-item text-dark" href="#">Approved</a>
+                    <a class="dropdown-item text-dark" href="#">Rejected</a>
+                </div>
+            </div>
+            {{--  END Dropdown  --}}
+
             @can('admin')
                 <a href="{{ route('allpost') }}"><i class="fas fa-thumbtack"></i> All Post by Tamu</a>
             @endcan

@@ -15,6 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $tamu) {
             $tamu->increments('id');
+            $tamu->boolean('isAdmin')->default(false);
             $tamu->string('username')->unique();
             $tamu->string('email')->unique();
             $tamu->string('nama_lengkap');

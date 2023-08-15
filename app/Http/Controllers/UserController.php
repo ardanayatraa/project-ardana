@@ -83,7 +83,7 @@ class UserController extends Controller
         // dd('test');
         $data = User::find($id);
         $data->delete();
-        return redirect('admin/userlist');
+        return redirect('admin/user list');
     }
 
     function edit($id)

@@ -18,6 +18,10 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->text('exerpt');
             $table->text('body');
+            $table->string('image')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->string('author'); // Tambahkan definisi kolom
+            $table->string('slug');
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });

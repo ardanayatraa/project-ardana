@@ -1,7 +1,6 @@
 @extends('layouts.main')
 @section('content')
     <h1 class="text-center my-1 mb-4">List Post</h1>
-
     <a class="btn btn-danger justify-content-between" href="{{ route('newpost') }}">Create New Post</a>
     <div class="container d-flex justify-content-between align-items-center mt-2">
 
@@ -11,21 +10,21 @@
                     <th scope="col">#</th>
                     <th scope="col">Judul Postingan</th>
                     <th scope="col">Posted By</th>
-                    <th scope="col">Latest Update</th>
-                    <th scope="col">Upload Date</th>
+                    <th scope="col">Status Post</th>
+
                     <th>Aksi</th>
                 </tr>
             </thead>
 
             <tbody>
                 <?php $number = 1; ?>
-                @foreach ($list as $lists)
+                @foreach ($post as $lists)
                     <tr>
                         <th scope="row">{{ $number++ }}</th>
                         <td>{{ $lists->title }}</td>
                         <td>{{ $lists->author }}</td>
-                        <td>{{ $lists->update_at }}</td>
-                        <td>{{ $lists->update_at }}</td>
+                        <td>{{ $lists->status }}</td>
+
 
                         <td>
                             <div class="btn-group" role="group" aria-label="Button Group">
