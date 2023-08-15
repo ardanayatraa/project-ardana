@@ -44,9 +44,13 @@
 
         <!-- Sidebar -->
         <div class="sidebar">
-            <a href="{{ route('userlist') }}"><i class="fas fa-layer-group"></i> User List</a>
+            @can('admin')
+                <a href="{{ route('userlist') }}"><i class="fas fa-layer-group"></i> User List</a>
+            @endcan
             <a href="{{ route('postlist') }}"><i class="fas fa-link"></i> Manage Post</a>
-            <a href="#"><i class="fas fa-thumbtack"></i> Category</a>
+            @can('admin')
+                <a href="{{ route('allpost') }}"><i class="fas fa-thumbtack"></i> All Post by Tamu</a>
+            @endcan
         </div>
 
         <!-- Konten Utama -->

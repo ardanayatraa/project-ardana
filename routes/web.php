@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TamuControllers;
 use App\Http\Controllers\UserController;
@@ -80,3 +81,8 @@ Route::post('/create/newpost', [PostController::class, 'createpost'])->name('cre
 Route::get('/admin/edit/{slug}', [PostController::class, 'editpost'])->name('editpost');
 Route::put('/admin/update/{slug}', [PostController::class, 'updatepost'])->name('updatepost');
 Route::delete('admin/delete/{slug}', [PostController::class, 'deletepost'])->name('deletepost');
+
+
+
+
+Route::get('/admin/allpost', [AdminController::class, 'allpost'])->name('allpost');

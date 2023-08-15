@@ -13,7 +13,7 @@ class TamuControllers extends Controller
 
         // dd('test');
         $data = User::all();
-        //<- untuk debug / dumping data
+        $this->authorize('admin');
         return view('users/list', compact('data'));
     }
 

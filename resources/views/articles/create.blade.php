@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('content')
     <h1 class="text-center my-1 mb-4">Create New Post</h1>
-    <form action="{{ route('createpost') }}" method="POST">
+    <form action="{{ route('createpost') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
@@ -27,11 +27,11 @@
         </div>
 
 
-        {{--  <div class="mb-3">
-            <label for="cover" class="form-label">Cover Image</label>
-            <input type="file" class="form-control" id="cover">
+        <div class="mb-3">
+            <label for="image" class="form-label">Cover Image</label>
+            <input type="file" class="form-control" id="image" name="image">
 
-        </div>  --}}
+        </div>
 
         <input id="body" type="hidden" name="body">
         <trix-editor input="body"></trix-editor>

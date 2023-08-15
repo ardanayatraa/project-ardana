@@ -135,6 +135,6 @@ class PostController extends Controller
 
         $data = Post::where('slug', $slug)->first();
         $data->delete();
-        return redirect('admin/articles/list');
+        return redirect('tamu/articles/list');
     }
 }
