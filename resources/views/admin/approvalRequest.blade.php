@@ -10,6 +10,7 @@
                     <th scope="col">Judul Postingan</th>
                     <th scope="col">Posted By</th>
                     <th scope="col">Status Post</th>
+                    <th scope="col">Approval Action</th>
 
                     <th>Aksi</th>
                 </tr>
@@ -25,6 +26,7 @@
                         <td>{{ $lists->status }}</td>
 
 
+
                         <td>
                             <div class="btn-group" role="group" aria-label="Button Group">
                                 <form action="{{ route('deletepost', ['slug' => $lists->slug]) }}" method="POST">
@@ -36,6 +38,14 @@
                                 <a href="{{ route('editpost', ['slug' => $lists->slug]) }}" class="btn btn-warning">Edit</a>
                                 <a href="{{ route('showpost', ['slug' => $lists->slug]) }}" class="btn btn-primary">View</a>
 
+                            </div>
+                        </td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Button Group">
+                                <a href="{{ route('approvalacc', ['slug' => $lists->slug]) }}"
+                                    class="btn btn-success">Approve</a>
+                                <a href="{{ route('approvalreject', ['slug' => $lists->slug]) }}"
+                                    class="btn btn-danger">Reject</a>
                             </div>
                         </td>
                     </tr>

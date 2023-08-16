@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TamuControllers;
 use App\Http\Controllers\UserController;
@@ -18,22 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
-// Route::get('/', function () {
-//     return view('users.login');
-// });
-
-
-// Route::get('register', function () {
-//     return view('users.register');
-// });
-
-Route::get('forgot', function () {
-    return view('users.forgot');
-});
 
 Route::get('sidebar', function () {
     return view('layouts.sidebar');
@@ -43,8 +29,8 @@ Route::get('/admin/userlist', [TamuControllers::class, 'index'])->name('userlist
 
 Route::get('/', [PostController::class, 'halamanawal']);
 
-Route::get('/login', [UserController::class, 'index'])->middleware('guest');
-Route::post('/login', [UserController::class, 'login'])->middleware('guest');
+Route::get('/login', [UserController::class, 'index'])->name('login');
+Route::post('/login', [UserController::class, 'login']);
 
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
@@ -89,3 +75,22 @@ Route::get('/admin/allpost', [AdminController::class, 'allpost'])->name('allpost
 
 // aproval
 Route::get('tamu/articles/approve-list', [PostController::class, 'listApprovePending'])->name('pendingTamu');
+Route::get('tamu/articles/rejected-list', [PostController::class, 'listApproveRejected'])->name('rejectedTamu');
+Route::get('tamu/articles/approved-list', [PostController::class, 'listApproved'])->name('approvedTamu');
+
+
+
+
+//admin
+Route::get('admin/articles/approve-list', [AdminController::class, 'listApprovePending'])->name('approvalReq');
+Route::get('admin/articles/approved/{slug}', [AdminController::class, 'approvedPost'])->name('approvalacc');
+Route::get('admin/articles/reject/{slug}', [AdminController::class, 'rejectPost'])->name('approvalreject');
+
+
+
+//forgot pass
+Route::get('forgot-password', [PasswordResetController::class, 'showForgotPasswordForm'])->name('forgot.password');
+Route::post('forgot-password', [PasswordResetController::class, 'sendResetLinkEmail'])->name('forgot.password.post');
+
+Route::get('reset-password/{token}', [PasswordResetController::class, 'showResetPasswordForm'])->name('reset.password');
+Route::post('reset-password', [PasswordResetController::class, 'resetPassword'])->name('reset.password.post');

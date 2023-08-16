@@ -22,6 +22,8 @@
                                 <button type="submit" class="btn btn-success btn-lg btn-block">Login</button>
                                 <small class="d-block text-center text-success">Ngide.net &copy; 2023</small>
                                 <p class="text-center punya">Belum punya akun? <a href="register" class="daftar">Daftar</a>
+                                <p class="text-center ">Lupa Password ??? <a href="{{ route('forgot.password') }}"
+                                        class="daftar">Reset</a>
                                 </p>
                             </div>
                         </form>

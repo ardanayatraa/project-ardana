@@ -1,6 +1,7 @@
 @extends('layouts.main')
 @section('content')
-    <h1 class="text-center my-1 mb-4">List Pending Post</h1>
+    <h1 class="text-center my-1 mb-4">List Post Rejected</h1>
+
     <div class="container d-flex justify-content-between align-items-center mt-2">
 
         <table class="table">
@@ -33,7 +34,6 @@
                                     <button type="submit" class="btn btn-danger"
                                         onclick="return confirm('Are you sure you want to delete this post?')">Delete</button>
                                 </form>
-                                <a href="{{ route('editpost', ['slug' => $lists->slug]) }}" class="btn btn-warning">Edit</a>
                                 <a href="{{ route('showpost', ['slug' => $lists->slug]) }}" class="btn btn-primary">View</a>
 
                             </div>

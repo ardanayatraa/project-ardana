@@ -8,9 +8,11 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+
+
     public function halamanawal()
     {
-        $post = Post::where('status', '=', 'active')->get();
+        $post = Post::where('status', '=', 'approved')->get();
         return view('users.index', compact('post'));
     }
 
@@ -20,6 +22,18 @@ class PostController extends Controller
         return view('articles.pendingAprove', compact('post'));
     }
 
+    public function listApproveRejected()
+    {
+        $post = Post::where('status', '=', 'rejected')->get();
+        return view('articles.rejectedApprove', compact('post'));
+    }
+    public function listApproved()
+    {
+        $post = Post::where('status', '=', 'approved')->get();
+        return view('articles.approved', compact('post'));
+    }
+
+    // End Approval
     public function show()
     {
         $post = Post::all();

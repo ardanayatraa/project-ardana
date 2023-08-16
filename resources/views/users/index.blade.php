@@ -13,7 +13,7 @@
                         <p class="card-text">{{ $posts->exerpt }}</p>
                     </div>
                     <div class="card-footer">
-                        <small class="text-muted">By {{ $posts->author }} | {{ $posts->title }}</small>
+                        <small class="text-muted">By {{ $posts->author }} | Created at {{ $posts->created_at }}</small>
                     </div>
                 </div>
             </div>
